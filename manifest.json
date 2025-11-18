@@ -1,0 +1,14 @@
+{
+  "name": "Red Bird Holiday Trail",
+  "short_name": "Holiday Trail",
+  "description": "A magical neighborhood trail of lights, cocoa, and festive stops - December 20, 2025",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d1b2a",
+  "theme_color": "#0a3d2e",
+  "orientation": "portrait-primary",
+  "scope": "./",
+  "categories": ["lifestyle", "entertainment"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
