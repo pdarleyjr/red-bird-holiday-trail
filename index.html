@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Red Bird Holiday Trail - A magical neighborhood trail of lights, cocoa, and festive stops. December 20, 2025.">
+    <title>Red Bird Holiday Trail | December 20, 2025</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Falling Snow Canvas -->
+    <canvas id="snow-canvas"></canvas>
+    
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <img src="assets/images/red_bird_holiday_trail.png" alt="Red Bird Neighborhood Holiday Trail" class="hero-logo">
+            <p class="tagline">A magical neighborhood trail of lights, cocoa, and festive stops</p>
+            
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="icon">🎅</span>
+                    <span>December 20, 2025</span>
+                </div>
+                <div class="detail-item">
+                    <span class="icon">🕯️</span>
+                    <span>5:00 - 9:00 PM</span>
+                </div>
+                <div class="detail-item">
+                    <span class="icon">📍</span>
+                    <span>Red Bird Neighborhood</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="https://form.jotform.com/253085245422150" class="btn btn-primary" target="_blank" rel="noopener">Host a Holiday Stop</a>
+                <a href="#" class="btn btn-secondary">View Trail Map - Coming Soon</a>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <img src="assets/images/ornament_red.png" alt="" class="decor decor-ornament-1">
+        <img src="assets/images/candy_cane.png" alt="" class="decor decor-candy-1">
+        <img src="assets/images/neon_star.png" alt="" class="decor decor-star-1">
+    </header>
+    
+    <main>
+        <!-- What/When/Where Section -->
+        <section class="info-cards">
+            <div class="container">
+                <div class="card-grid">
+                    <div class="info-card">
+                        <div class="card-icon">🎄</div>
+                        <h3>What</h3>
+                        <p>A self-guided neighborhood holiday trail with festive front-yard stops</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">📅</div>
+                        <h3>When</h3>
+                        <p>December 20, 2025<br>5:00 - 9:00 PM</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🏡</div>
+                        <h3>Where</h3>
+                        <p>Red Bird Neighborhood<br>Miami, FL area</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Sign Up Your House</h3>
+                        <p>Register to host a festive stop at your home. Decorate your front yard with lights, set up a cozy cocoa station, or create any holiday experience you'd like to share.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>We Build the Map</h3>
+                        <p>We'll compile all participating homes into a neighborhood trail map and share it with the community before the event.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Enjoy the Trail</h3>
+                        <p>On event night, families can stroll the neighborhood and visit each stop at their own pace. It's a self-guided tour of holiday magic.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Example Stops Section -->
+        <section class="example-stops">
+            <div class="container">
+                <h2 class="section-title">Example Holiday Stop Ideas</h2>
+                <p class="section-subtitle">These are just ideas neighbors can use for inspiration - create whatever brings you joy!</p>
+                
+                <div class="stops-grid">
+                    <div class="stop-card">
+                        <span class="stop-emoji">📽️</span>
+                        <h4>Movie Lawn Stop</h4>
+                        <p>Project a holiday film on your garage</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🎅</span>
+                        <h4>Santa's Workshop</h4>
+                        <p>Photo opportunity with Santa</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">💡</span>
+                        <h4>Winter Wonderland Lights</h4>
+                        <p>Spectacular light display</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🎨</span>
+                        <h4>Ornament Workshop</h4>
+                        <p>DIY ornament decorating station</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">✉️</span>
+                        <h4>Letters to Santa</h4>
+                        <p>Special mailbox for Santa letters</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">☕</span>
+                        <h4>Hot Cocoa Stop</h4>
+                        <p>Warm cocoa with toppings</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🍪</span>
+                        <h4>Cookie Corner</h4>
+                        <p>Homemade holiday cookies</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🧃</span>
+                        <h4>Cider Station</h4>
+                        <p>Hot apple cider for all</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🍫</span>
+                        <h4>S'mores Stop</h4>
+                        <p>Roast marshmallows by the fire</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🍿</span>
+                        <h4>Popcorn Porch</h4>
+                        <p>Fresh popped holiday treats</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🧁</span>
+                        <h4>Sweet Street</h4>
+                        <p>Assorted holiday sweets</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🍷</span>
+                        <h4>Holiday Spirits Stop</h4>
+                        <p>For adults only - festive beverages</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🍬</span>
+                        <h4>Candy Cane Lane</h4>
+                        <p>Traditional peppermint treats</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">💋</span>
+                        <h4>Chocolate Kiss Corner</h4>
+                        <p>Bite-sized chocolate treats</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🏠</span>
+                        <h4>Gingerbread Bite Stop</h4>
+                        <p>Mini gingerbread cookies</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">☁️</span>
+                        <h4>Mini Marshmallow Stop</h4>
+                        <p>Fluffy marshmallow treats</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🍭</span>
+                        <h4>Cookie Pop Stop</h4>
+                        <p>Festive cookie pops</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">🥤</span>
+                        <h4>Hot Cocoa-to-Go</h4>
+                        <p>Portable cocoa for the trail</p>
+                    </div>
+                    <div class="stop-card">
+                        <span class="stop-emoji">💚</span>
+                        <h4>Mistletoe Moment</h4>
+                        <p>Photo op under the mistletoe</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="container">
+                <img src="assets/images/holly_cluster.png" alt="" class="cta-decor">
+                <h2>Ready to Join the Magic?</h2>
+                <p>We're inviting all Red Bird neighbors to participate in this special holiday tradition. Sign up your house to host a stop on the trail!</p>
+                <a href="https://form.jotform.com/253085245422150" class="btn btn-primary btn-large" target="_blank" rel="noopener">Host a Holiday Stop</a>
+                <p class="cta-note">Free to participate • Family-friendly • Volunteer-powered</p>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Do I have to hand out food or treats?</h3>
+                        <p>Not at all! Simple decorations, lights, or a festive display are perfectly fine. Participate in whatever way feels comfortable for you and your family.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Is there a cost to participate?</h3>
+                        <p>No, this is completely free! It's a neighborhood celebration where volunteers decorate and host stops. The only "cost" is whatever you choose to spend on your own decorations or treats.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Do I have to be home the entire time?</h3>
+                        <p>You can decide what works best for you. Some hosts may set up an unattended display with lights and decorations, while others prefer to be present to interact with neighbors. Both approaches are welcome!</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>When will the trail map be available?</h3>
+                        <p>We'll finalize and share the complete trail map closer to the event date once all participating homes have registered. Check back here for updates!</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What if it rains?</h3>
+                        <p>We'll monitor the weather and communicate any changes via the neighborhood channels. The beauty of a neighborhood trail is its flexibility!</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>More details and the full trail map coming soon!</strong></p>
+                    <p>Stay tuned for updates as we build this magical neighborhood experience together.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Red Bird Neighborhood Holiday Trail</p>
+            <p class="footer-note">A community celebration bringing neighbors together for the holidays</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
