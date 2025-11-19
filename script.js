@@ -420,6 +420,45 @@
     }
     
     // ===================================
+    // PERSISTENT VIEW COUNTER (CountAPI)
+    // ===================================
+    
+    /**
+     * Fetch and display the view count using CountAPI
+     * CountAPI provides a free, persistent counter that never resets
+     * unless explicitly cleared by the namespace/key owner
+     */
+    (function initViewCounter() {
+        const viewCountElement = document.getElementById('viewCount');
+        
+        if (!viewCountElement) return;
+        
+        // Use CountAPI to track page views
+        // Format: https://api.countapi.xyz/hit/{namespace}/{key}
+        // This increments the counter and returns the new value
+        const namespace = 'red-bird-holiday-trail';
+        const key = 'site-visits';
+        const apiUrl = `https://api.countapi.xyz/hit/${namespace}/${key}`;
+        
+        // Fetch the count
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data && typeof data.value === 'number') {
+                    // Format the number with commas for readability
+                    const formattedCount = data.value.toLocaleString();
+                    viewCountElement.textContent = formattedCount;
+                } else {
+                    viewCountElement.textContent = '---';
+                }
+            })
+            .catch(error => {
+                console.error('[View Counter] Failed to fetch count:', error);
+                viewCountElement.textContent = '---';
+            });
+    })();
+    
+    // ===================================
     // SERVICE WORKER REGISTRATION (PWA)
     // ===================================
     

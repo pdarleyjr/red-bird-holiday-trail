@@ -548,6 +548,32 @@ footer p {
     opacity: 0.8;
 }
 
+.view-counter {
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+    color: var(--soft-beige);
+    opacity: 0.6;
+    margin-top: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    transition: opacity 0.3s ease;
+}
+
+.view-counter:hover {
+    opacity: 0.9;
+}
+
+.view-icon {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+#viewCount {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
 /* ===================================
    ANIMATIONS
    =================================== */
