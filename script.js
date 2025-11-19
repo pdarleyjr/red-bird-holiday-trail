@@ -364,6 +364,101 @@
     }
     
     // ===================================
+    // MOBILE NAVIGATION - ACTIVE STATE
+    // ===================================
+    
+    if (window.innerWidth <= 1024) {
+        const sections = document.querySelectorAll('section[id], header[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        // Create a map of section IDs to nav items
+        const navMap = new Map();
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                const sectionId = href.substring(1);
+                navMap.set(sectionId, item);
+            }
+        });
+        
+        // Intersection Observer for active state
+        const navObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '-80px 0px -60% 0px'
+        };
+        
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    const activeNavItem = navMap.get(sectionId);
+                    
+                    if (activeNavItem) {
+                        // Remove active class from all nav items
+                        navItems.forEach(item => item.classList.remove('active'));
+                        // Add active class to current nav item
+                        activeNavItem.classList.add('active');
+                    }
+                }
+            });
+        }, navObserverOptions);
+        
+        // Observe all sections
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+        
+        // Handle orientation changes for mobile nav
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                if (window.innerWidth > 1024) {
+                    // Cleanup observers if switched to desktop view
+                    sections.forEach(section => navObserver.unobserve(section));
+                }
+            }, 100);
+        }, { passive: true });
+    }
+    
+    // ===================================
+    // SERVICE WORKER REGISTRATION (PWA)
+    // ===================================
+    
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then((registration) => {
+                    console.log('[PWA] Service Worker registered successfully:', registration.scope);
+                    
+                    // Check for updates on page load
+                    registration.update();
+                    
+                    // Listen for updates
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        console.log('[PWA] New Service Worker found, installing...');
+                        
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // New service worker available, could show update notification
+                                console.log('[PWA] New version available! Refresh to update.');
+                            }
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.error('[PWA] Service Worker registration failed:', error);
+                });
+            
+            // Handle controller change (new service worker activated)
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                console.log('[PWA] New Service Worker activated');
+            });
+        }, { passive: true });
+    } else {
+        console.log('[PWA] Service Workers are not supported in this browser');
+    }
+    
+    // ===================================
     // CONSOLE MESSAGE
     // ===================================
     

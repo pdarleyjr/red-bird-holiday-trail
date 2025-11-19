@@ -721,6 +721,124 @@ footer p {
 }
 
 /* ===================================
+   MOBILE APP-LIKE NAVIGATION BAR
+   =================================== */
+
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(13, 27, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 0.5rem 0;
+    padding-bottom: calc(0.5rem + var(--safe-area-inset-bottom));
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    min-width: 64px;
+    min-height: var(--touch-target-min);
+    text-decoration: none;
+    color: var(--soft-beige);
+    transition: all 0.3s ease;
+    border-radius: var(--border-radius);
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    transition: all 0.3s ease;
+}
+
+.nav-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+/* Active state for nav items */
+.nav-item.active {
+    color: var(--neon-gold);
+}
+
+.nav-item.active .nav-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(255, 187, 0, 0.5));
+}
+
+/* Touch feedback */
+.nav-item:active {
+    transform: scale(0.95);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+/* Tablet hover effects */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-item:hover {
+        color: var(--soft-gold);
+        background: rgba(255, 215, 0, 0.08);
+    }
+    
+    .nav-item:hover .nav-icon {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+/* Hide mobile nav on desktop */
+@media (min-width: 1025px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+
+/* Add bottom padding to body on mobile to account for nav bar */
+@media (max-width: 1024px) {
+    body {
+        padding-bottom: calc(70px + var(--safe-area-inset-bottom));
+    }
+    
+    footer {
+        padding-bottom: calc(var(--spacing-md) + 70px + var(--safe-area-inset-bottom));
+    }
+}
+
+/* Optimize nav bar for smaller screens */
+@media (max-width: 360px) {
+    .nav-item {
+        min-width: 56px;
+        padding: 0.4rem 0.5rem;
+    }
+    
+    .nav-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .nav-label {
+        font-size: 0.65rem;
+    }
+}
+
+/* ===================================
    ACCESSIBILITY & REDUCED MOTION
    =================================== */
 
