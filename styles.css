@@ -15,7 +15,7 @@
     --soft-gold: #f4a261;
     --neon-red: #ff0a54;
     --neon-gold: #ffbb00;
-    
+
     /* Mobile-First Spacing (scales up on larger screens) */
     --spacing-xs: 0.5rem;
     --spacing-sm: 0.75rem;
@@ -23,16 +23,16 @@
     --spacing-lg: 2rem;
     --spacing-xl: 2.5rem;
     --spacing-xxl: 3rem;
-    
+
     /* Typography - Mobile First */
     --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     --font-display: 'Playfair Display', Georgia, serif;
     --font-size-base: 16px;
     --line-height-base: 1.6;
-    
+
     /* Touch Targets - iOS/Android Guidelines */
     --touch-target-min: 44px;
-    
+
     /* Borders & Shadows */
     --border-radius: 12px;
     --border-radius-lg: 20px;
@@ -41,7 +41,7 @@
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
     --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
     --shadow-neon: 0 0 30px rgba(255, 10, 84, 0.5);
-    
+
     /* Safe Area Insets for iOS */
     --safe-area-inset-top: env(safe-area-inset-top);
     --safe-area-inset-bottom: env(safe-area-inset-bottom);
@@ -123,7 +123,8 @@ body {
 .hero {
     position: relative;
     min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    min-height: 100dvh;
+    /* Dynamic viewport height for mobile */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,6 +149,16 @@ body {
     margin-bottom: var(--spacing-md);
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
     animation: fadeInScale 1s ease-out;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
+    color: var(--warm-white);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--spacing-sm);
+    padding: 0 var(--spacing-sm);
 }
 
 .tagline {
@@ -452,7 +463,7 @@ body {
     padding: 0 var(--spacing-sm);
 }
 
-.cta-section > .container > p {
+.cta-section>.container>p {
     font-size: clamp(1.1rem, 4vw, 1.3rem);
     margin: 0 auto var(--spacing-lg);
     line-height: 1.7;
@@ -583,6 +594,7 @@ footer p {
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -594,6 +606,7 @@ footer p {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -601,9 +614,12 @@ footer p {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -623,89 +639,89 @@ footer p {
         --spacing-xl: 4rem;
         --spacing-xxl: 6rem;
     }
-    
+
     .container {
         max-width: 720px;
         padding: 0 var(--spacing-lg);
     }
-    
+
     .hero-content {
         max-width: 700px;
     }
-    
+
     .hero-logo {
         max-width: 500px;
     }
-    
+
     .event-details {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: var(--spacing-lg);
     }
-    
+
     .hero-buttons {
         flex-direction: row;
         justify-content: center;
     }
-    
+
     .btn {
         width: auto;
         min-width: 200px;
     }
-    
+
     .btn:hover {
         transform: translateY(-2px) scale(1.05);
         box-shadow: var(--shadow-lg), 0 0 40px rgba(255, 10, 84, 0.7);
     }
-    
+
     .btn-secondary:hover {
         background: rgba(255, 215, 0, 0.1);
         border-color: var(--neon-gold);
         box-shadow: 0 0 25px rgba(255, 187, 0, 0.5);
     }
-    
+
     .card-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-lg);
     }
-    
+
     .info-card:hover {
         transform: translateY(-8px);
         box-shadow: var(--shadow-lg), var(--shadow-glow);
         border-color: var(--metallic-gold);
     }
-    
+
     .steps-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .step-card:hover {
         transform: translateY(-5px);
         border-color: var(--radiant-red);
         box-shadow: 0 0 30px rgba(214, 40, 40, 0.4);
     }
-    
+
     .stops-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
     }
-    
+
     .stop-card:hover {
         transform: translateY(-5px);
         border-color: var(--soft-gold);
         box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
     }
-    
+
     .faq-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-lg);
     }
-    
-    .cta-section > .container > p {
+
+    .cta-section>.container>p {
         max-width: 700px;
     }
 }
@@ -718,15 +734,15 @@ footer p {
     .container {
         max-width: 960px;
     }
-    
+
     .hero-content {
         max-width: 900px;
     }
-    
+
     .hero-logo {
         max-width: 600px;
     }
-    
+
     .stops-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -740,9 +756,9 @@ footer p {
     .container {
         max-width: 1200px;
     }
-    
+
     .stops-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -823,7 +839,7 @@ footer p {
         color: var(--soft-gold);
         background: rgba(255, 215, 0, 0.08);
     }
-    
+
     .nav-item:hover .nav-icon {
         transform: translateY(-2px) scale(1.05);
     }
@@ -841,7 +857,7 @@ footer p {
     body {
         padding-bottom: calc(70px + var(--safe-area-inset-bottom));
     }
-    
+
     footer {
         padding-bottom: calc(var(--spacing-md) + 70px + var(--safe-area-inset-bottom));
     }
@@ -853,12 +869,12 @@ footer p {
         min-width: 56px;
         padding: 0.4rem 0.5rem;
     }
-    
+
     .nav-icon {
         width: 20px;
         height: 20px;
     }
-    
+
     .nav-label {
         font-size: 0.65rem;
     }
@@ -869,6 +885,7 @@ footer p {
    =================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -876,7 +893,7 @@ footer p {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     #snow-canvas {
         display: none;
     }
@@ -891,7 +908,7 @@ button:focus-visible {
 
 /* Improve tap target spacing on mobile */
 @media (max-width: 767px) {
-    .btn + .btn {
+    .btn+.btn {
         margin-top: 0;
     }
 }
@@ -911,6 +928,7 @@ button:focus-visible {
 
 /* Optimize backdrop filters for mobile */
 @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+
     .info-card,
     .step-card,
     .stop-card,
