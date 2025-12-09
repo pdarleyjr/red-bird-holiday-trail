@@ -167,7 +167,10 @@
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            if (href !== '#') {
+            if (href === '#') {
+                // Prevent default for placeholder links (like "Coming Soon")
+                e.preventDefault();
+            } else if (href !== '#') {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 
