@@ -894,11 +894,15 @@
         // Navigation button event listeners
         prevBtn?.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            console.log('[Story Carousel] Previous button clicked');
             prevSlide();
         });
 
         nextBtn?.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            console.log('[Story Carousel] Next button clicked');
             nextSlide();
         });
 
