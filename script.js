@@ -833,4 +833,4 @@
     console.log('%cWelcome to the holiday magic! ✨', 'color: #ffd700; font-size: 16px;');
     console.log('%cBuilt with ❤️ for the Red Bird Neighborhood', 'color: #0a3d2e; font-size: 12px;');
     console.log(`%cDevice: ${isMobile ? 'Mobile' : 'Desktop'} | Touch: ${supportsTouch ? 'Yes' : 'No'} | iOS: ${isIOS ? 'Yes' : 'No'}`, 'color: #888; font-size: 10px;');
-});
+})();
