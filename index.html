@@ -91,6 +91,119 @@
         </div>
     </section>
 
+    <!-- Image Gallery Carousel Section -->
+    <section id="gallery-carousel" class="carousel-section" aria-label="Holiday Trail Photo Gallery">
+        <div class="container">
+            <h2 class="section-title">Holiday Trail Memories</h2>
+            <p class="section-subtitle">Explore the festive magic of our community celebration!</p>
+
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Casa Coquito -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/casa_coquito_small.jpg">
+                            <img src="assets/images/casa_coquito_large.jpg" alt="Casa Coquito holiday display"
+                                loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Cookie Corner -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/cookie_corner_small.jpg">
+                            <img src="assets/images/cookie_corner_large.jpg" alt="Cookie Corner festive setup"
+                                loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Cookie Corner 2 -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/cookie_corner_small_2.PNG">
+                            <img src="assets/images/cookie_corner_large_2.png" alt="Cookie Corner display"
+                                loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Dear Santa -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/dear_santa_small.jpg">
+                            <img src="assets/images/dear_santa_large.jpg" alt="Dear Santa mailbox" loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Fajardo -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/fajardo_small.PNG">
+                            <img src="assets/images/fajardo_large.PNG" alt="Fajardo holiday lights" loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Fox -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/fox_small.jpg">
+                            <img src="assets/images/fox_large.jpg" alt="Fox holiday decoration" loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Gingerbread House -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/gignerbreadhouse_small.jpg">
+                            <img src="assets/images/gingerbreadhouse_large.jpg" alt="Gingerbread house display"
+                                loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Jet Ski Santa -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/jet_ski_santa_small.jpg">
+                            <img src="assets/images/jet_ski_santa_large.jpg" alt="Jet Ski Santa decoration"
+                                loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Miracle -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/miracle_small.PNG">
+                            <img src="assets/images/miracle_large.PNG" alt="Miracle on 34th Street display"
+                                loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- Santa Sweet -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/santa_sweet_small.jpg">
+                            <img src="assets/images/santa_sweet_large.jpg" alt="Santa's Sweet Shop" loading="lazy">
+                        </picture>
+                    </div>
+                    <!-- S'mores -->
+                    <div class="carousel-slide">
+                        <picture>
+                            <source media="(max-width: 900px)" srcset="assets/images/smores_small.jpg">
+                            <img src="assets/images/smores_large.jpg" alt="S'mores station" loading="lazy">
+                        </picture>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn carousel-btn-prev" id="prevBtn" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="carousel-btn carousel-btn-next" id="nextBtn" aria-label="Next image">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators" id="carouselIndicators"></div>
+            </div>
+        </div>
+    </section>
+
     <main>
         <!-- What/When/Where Section -->
         <section class="info-cards" id="info">
@@ -298,6 +411,34 @@
             <span class="nav-label">FAQ</span>
         </a>
     </nav>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+        <button class="lightbox-btn lightbox-btn-prev" id="lightboxPrev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+        <button class="lightbox-btn lightbox-btn-next" id="lightboxNext" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="lightbox-content">
+            <picture id="lightboxPicture">
+                <img id="lightboxImg" src="" alt="" loading="lazy">
+            </picture>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
