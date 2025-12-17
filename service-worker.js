@@ -11,7 +11,7 @@
  */
 
 // Cache version - increment this when you update cached files
-const CACHE_VERSION = 'rbht-v1';
+const CACHE_VERSION = 'rbht-v3-20251217';
 const CACHE_NAME = `red-bird-holiday-trail-${CACHE_VERSION}`;
 
 // List of assets to cache for offline use
@@ -19,8 +19,8 @@ const CACHE_NAME = `red-bird-holiday-trail-${CACHE_VERSION}`;
 const assetsToCache = [
   './',
   './index.html',
-  './styles.css',
-  './script.js',
+  './styles.css?v=20251217-2',
+  './script.js?v=20251217-2',
   './manifest.json',
   './assets/images/red_bird_holiday_trail.png',
   './assets/icons/icon-192.png',
@@ -35,8 +35,8 @@ const assetsToCache = [
  * This is where we cache our essential assets
  */
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installing service worker...', CACHE_VERSION);
-  
+  console.log(`[Service Worker] Installing service worker... ${CACHE_VERSION}`);
+
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
@@ -60,8 +60,8 @@ self.addEventListener('install', (event) => {
  * This is where we clean up old caches
  */
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activating service worker...', CACHE_VERSION);
-  
+  console.log(`[Service Worker] Activating service worker... ${CACHE_VERSION}`);
+
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
@@ -93,7 +93,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') {
     return;
   }
-  
+
   // Skip cross-origin requests (like Google Fonts, external APIs)
   if (!event.request.url.startsWith(self.location.origin)) {
     // For Google Fonts and other external resources, use network with cache fallback
@@ -114,35 +114,35 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
-  
+
   // For same-origin requests, use cache-first strategy
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
         // Return cached response if found
         if (cachedResponse) {
-          console.log('[Service Worker] Serving from cache:', event.request.url);
+          console.log(`[Service Worker] Serving from cache: ${event.request.url}`);
           return cachedResponse;
         }
-        
+
         // Otherwise, fetch from network
-        console.log('[Service Worker] Fetching from network:', event.request.url);
+        console.log(`[Service Worker] Fetching from network: ${event.request.url}`);
         return fetch(event.request)
           .then((networkResponse) => {
             // Don't cache if response is not ok
             if (!networkResponse || networkResponse.status !== 200 || networkResponse.type === 'error') {
               return networkResponse;
             }
-            
+
             // Clone the response before caching (response can only be consumed once)
             const responseToCache = networkResponse.clone();
-            
+
             // Cache the new resource for future offline use
             caches.open(CACHE_NAME)
               .then((cache) => {
                 cache.put(event.request, responseToCache);
               });
-            
+
             return networkResponse;
           })
           .catch((error) => {
@@ -163,7 +163,7 @@ self.addEventListener('message', (event) => {
     console.log('[Service Worker] Received SKIP_WAITING message');
     self.skipWaiting();
   }
-  
+
   if (event.data && event.data.type === 'CLEAR_CACHE') {
     console.log('[Service Worker] Received CLEAR_CACHE message');
     event.waitUntil(
