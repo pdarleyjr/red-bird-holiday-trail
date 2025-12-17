@@ -11,7 +11,7 @@
  */
 
 // Cache version - increment this when you update cached files
-const CACHE_VERSION = 'rbht-v3-20251217';
+const CACHE_VERSION = 'rbht-v4-20251217';
 const CACHE_NAME = `red-bird-holiday-trail-${CACHE_VERSION}`;
 
 // List of assets to cache for offline use
@@ -19,13 +19,18 @@ const CACHE_NAME = `red-bird-holiday-trail-${CACHE_VERSION}`;
 const assetsToCache = [
   './',
   './index.html',
-  './styles.css?v=20251217-2',
-  './script.js?v=20251217-2',
+  './styles.css?v=20251217-3',
+  './script.js?v=20251217-3',
   './manifest.json',
   './assets/images/red_bird_holiday_trail.png',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
   './assets/icons/apple-touch-icon.png',
+  '/assets/images/fox_large.jpg',
+  '/assets/images/fox_small.jpg',
+  '/assets/images/gingerbreadhouse_new_large.jpg',
+  '/assets/images/gingerbreadhouse_new_small.jpg',
+  '/assets/images/holiday-trail-map-2025.png',
   // Google Fonts will be cached at runtime if accessed
 ];
 

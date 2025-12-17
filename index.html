@@ -47,7 +47,11 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css?v=20251217-2">
+    <link rel="stylesheet" href="styles.css?v=20251217-3">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
@@ -189,8 +193,9 @@
                         <!-- Slide 4: Gingerbread House -->
                         <div class="carousel-story-slide" data-slide="3">
                             <picture>
-                                <source media="(min-width: 768px)" srcset="assets/images/gingerbreadhouse_large.jpg">
-                                <img src="assets/images/gignerbreadhouse_small.jpg"
+                                <source media="(min-width: 768px)"
+                                    srcset="assets/images/gingerbreadhouse_new_large.jpg">
+                                <img src="assets/images/gingerbreadhouse_new_small.jpg"
                                     alt="Gingerbread house holiday display" loading="lazy">
                             </picture>
                             <div class="slide-caption">
@@ -550,7 +555,10 @@
         <div class="lightbox-counter" id="lightboxCounter"></div>
     </div>
 
-    <script src="script.js?v=20251217-2"></script>
+    <script src="script.js?v=20251217-3"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha384-V0KaOTqwQDYZYQ6ELW9gEMH40p68q4WP1h5cN6dFpCkPPZVCjpTkd0aXJ+X0WMHC" crossorigin=""></script>
 </body>
 
 </html>
