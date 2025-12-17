@@ -473,9 +473,9 @@ body {
     text-align: center;
     margin-top: var(--spacing-lg);
     padding: var(--spacing-md);
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: var(--shadow-sm);
 }
 
 .map-tips p {
@@ -1033,9 +1033,10 @@ button:focus-visible {
 
 .story-carousel-section {
     padding: 5rem 0;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background: linear-gradient(135deg, var(--midnight-blue) 0%, var(--deep-green) 100%);
     position: relative;
     overflow: hidden;
+    z-index: 2;
 }
 
 .story-carousel-section .section-title {
@@ -1046,7 +1047,7 @@ button:focus-visible {
 .story-carousel-section .section-subtitle {
     margin-bottom: 3rem;
     text-align: center;
-    color: var(--text-light);
+    color: var(--soft-beige);
     font-size: 1.1rem;
 }
 
@@ -1068,7 +1069,7 @@ button:focus-visible {
 .carousel-track {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
 }
@@ -1085,8 +1086,8 @@ button:focus-visible {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.7;
-    transform: scale(0.9);
+    opacity: 0.5;
+    transform: scale(0.85);
 }
 
 /* Active (Center) Slide */
@@ -1112,7 +1113,7 @@ button:focus-visible {
     transition: transform 0.6s ease;
 }
 
-.carousel-story-slide:hover img {
+.carousel-story-slide[data-active="true"]:hover img {
     transform: scale(1.05);
 }
 
@@ -1130,7 +1131,7 @@ button:focus-visible {
 }
 
 .carousel-story-slide[data-active="true"] .slide-caption,
-.carousel-story-slide:hover .slide-caption {
+.carousel-story-slide[data-active="true"]:hover .slide-caption {
     transform: translateY(0);
 }
 
@@ -1159,7 +1160,7 @@ button:focus-visible {
     border: none;
     border-radius: 50%;
     background: white;
-    color: var(--primary-color);
+    color: var(--deep-green);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1171,10 +1172,10 @@ button:focus-visible {
 }
 
 .story-nav-btn:hover {
-    background: var(--accent-color);
-    color: white;
+    background: var(--metallic-gold);
+    color: var(--midnight-blue);
     transform: translateY(-50%) scale(1.15);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
 }
 
 .story-nav-btn:active {
@@ -1216,11 +1217,11 @@ button:focus-visible {
 }
 
 .story-indicator:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 215, 0, 0.5);
 }
 
 .story-indicator[data-active="true"] {
-    background: white;
+    background: var(--metallic-gold);
     width: 60px;
 }
 
@@ -1387,30 +1388,37 @@ button:focus-visible {
     }
 
     .story-carousel {
-        padding: 0 15px;
+        padding: 0 50px;
     }
 
     .carousel-viewport {
         padding: 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    /* Mobile: Single Column, Full Width */
+    /* Mobile: Single Column, Centered */
+    .carousel-track {
+        justify-content: center;
+    }
+
     .carousel-story-slide {
         width: 100%;
         max-width: 400px;
         height: 320px;
-        margin: 0 10px;
-        transform: scale(1);
-        opacity: 1;
+        margin: 0 auto;
+        transform: scale(1) !important;
+        opacity: 1 !important;
     }
 
     .carousel-story-slide[data-active="true"] {
-        transform: scale(1);
+        transform: scale(1) !important;
     }
 
-    /* Hide flanking slides on mobile */
-    .carousel-story-slide:not([data-active="true"]) {
-        display: none;
+    /* Hide flanking slides on mobile - they're set to display: none via JS */
+    .carousel-story-slide[data-active="false"] {
+        display: none !important;
     }
 
     .slide-caption {
@@ -1427,8 +1435,8 @@ button:focus-visible {
     }
 
     .story-nav-btn {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
     }
 
     .story-nav-btn svg {
@@ -1447,6 +1455,7 @@ button:focus-visible {
     .story-progress {
         margin-top: 1.5rem;
         gap: 6px;
+        flex-wrap: wrap;
     }
 
     .story-indicator {
@@ -1506,6 +1515,17 @@ button:focus-visible {
     .carousel-story-slide {
         width: 500px;
         height: 375px;
+    }
+
+    .carousel-story-slide[data-active="false"] {
+        display: block !important;
+    }
+}
+
+/* Desktop - ensure flanking slides are visible */
+@media (min-width: 768px) {
+    .carousel-story-slide[data-active="false"] {
+        display: block !important;
     }
 }
 

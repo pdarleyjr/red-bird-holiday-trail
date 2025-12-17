@@ -503,9 +503,327 @@
     // ===================================
     //LEX                       // ===================================
 
-    /**
-     * Add your code for new components, such as the STORY CAROUSEL - NAT GEO STYLE (NO AUTOPLAY)
-     */
+    // ===================================
+    // STORY CAROUSEL - NAT GEO STYLE (NO AUTOPLAY)
+    // ===================================
+
+    (function initStoryCarousel() {
+        const track = document.getElementById('storyCarouselTrack');
+        const prevBtn = document.getElementById('storyPrevBtn');
+        const nextBtn = document.getElementById('storyNextBtn');
+        const progressContainer = document.getElementById('storyProgress');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxPicture = document.getElementById('lightboxPicture');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+
+        if (!track) {
+            console.error('[Story Carousel] Track element not found');
+            return;
+        }
+
+        const slides = Array.from(track.querySelectorAll('.carousel-story-slide'));
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+
+        console.log(`[Story Carousel] Found ${totalSlides} slides`);
+
+        // Create progress indicators
+        slides.forEach((_, index) => {
+            const indicator = document.createElement('button');
+            indicator.classList.add('story-indicator');
+            indicator.setAttribute('aria-label', `Go to story ${index + 1}`);
+            indicator.setAttribute('data-index', index);
+            if (index === 0) indicator.setAttribute('data-active', 'true');
+            indicator.addEventListener('click', () => goToSlide(index));
+            progressContainer.appendChild(indicator);
+        });
+
+        const indicators = Array.from(progressContainer.querySelectorAll('.story-indicator'));
+
+        // Update carousel position and active states
+        function updateCarousel(transition = true) {
+            console.log(`[Story Carousel] Updating to slide ${currentIndex}`);
+
+            // Remove transition temporarily if needed
+            if (!transition) {
+                track.style.transition = 'none';
+            }
+
+            // Update slide active states
+            slides.forEach((slide, index) => {
+                if (index === currentIndex) {
+                    slide.setAttribute('data-active', 'true');
+                    slide.style.display = 'block';
+                } else {
+                    slide.setAttribute('data-active', 'false');
+                    // On mobile, hide non-active slides completely
+                    if (window.innerWidth < 768) {
+                        slide.style.display = 'none';
+                    } else {
+                        slide.style.display = 'block';
+                    }
+                }
+            });
+
+            // Calculate transform for center-focused layout
+            const isMobileView = window.innerWidth < 768;
+            const viewport = track.parentElement;
+
+            if (isMobileView) {
+                // Mobile: Simple centering of current slide
+                track.style.transform = 'translateX(0)';
+            } else {
+                // Desktop: Center current slide with flanking slides visible
+                const slideWidth = 600; // Fixed width from CSS
+                const gap = 30; // Total gap (15px margin on each side)
+                const viewportCenter = viewport.offsetWidth / 2;
+                const slideCenter = slideWidth / 2;
+
+                // Calculate offset to center the current slide
+                const totalOffset = (currentIndex * (slideWidth + gap));
+                const centeringOffset = viewportCenter - slideCenter;
+                const finalTransform = centeringOffset - totalOffset;
+
+                track.style.transform = `translateX(${finalTransform}px)`;
+                console.log(`[Story Carousel] Transform: ${finalTransform}px (viewport: ${viewport.offsetWidth}px)`);
+            }
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.setAttribute('data-active', 'true');
+                } else {
+                    indicator.setAttribute('data-active', 'false');
+                }
+            });
+
+            // Re-enable transition
+            if (!transition) {
+                // Force reflow
+                void track.offsetWidth;
+                track.style.transition = '';
+            }
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Previous slide
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Navigation button event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('[Story Carousel] Previous button clicked');
+                prevSlide();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('[Story Carousel] Next button clicked');
+                nextSlide();
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox?.classList.contains('active')) return; // Don't interfere with lightbox
+
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlide();
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diffX = touchStartX - touchEndX;
+            const diffY = Math.abs(touchStartY - touchEndY);
+
+            // Only trigger if horizontal swipe is dominant
+            if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+                if (diffX > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+
+        // Resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                console.log('[Story Carousel] Resize detected, updating layout');
+                updateCarousel(false);
+            }, 250);
+        }, { passive: true });
+
+        // ===================================
+        // LIGHTBOX FUNCTIONALITY
+        // ===================================
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxImage();
+            lightbox?.classList.add('active');
+            document.body.classList.add('lightbox-open');
+        }
+
+        function closeLightbox() {
+            lightbox?.classList.remove('active');
+            document.body.classList.remove('lightbox-open');
+        }
+
+        function updateLightboxImage() {
+            const currentSlide = slides[currentIndex];
+            const picture = currentSlide.querySelector('picture');
+            const img = picture.querySelector('img');
+
+            // Clone the picture element for responsive image loading
+            const newPicture = picture.cloneNode(true);
+            const newImg = newPicture.querySelector('img');
+            newImg.id = 'lightboxImg';
+
+            // Clear and update lightbox picture
+            if (lightboxPicture) {
+                lightboxPicture.innerHTML = '';
+                lightboxPicture.appendChild(newPicture);
+            }
+
+            // Update counter
+            if (lightboxCounter) {
+                lightboxCounter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+            }
+        }
+
+        function lightboxNextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateLightboxImage();
+        }
+
+        function lightboxPrevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateLightboxImage();
+        }
+
+        // Click on carousel slide to open lightbox
+        slides.forEach((slide, index) => {
+            slide.addEventListener('click', () => {
+                // Only open lightbox if this is the active slide
+                if (slide.getAttribute('data-active') === 'true') {
+                    openLightbox(index);
+                }
+            });
+        });
+
+        // Lightbox controls
+        lightboxClose?.addEventListener('click', closeLightbox);
+        lightboxNext?.addEventListener('click', lightboxNextSlide);
+        lightboxPrev?.addEventListener('click', lightboxPrevSlide);
+
+        // Close lightbox on background click
+        lightbox?.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox?.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                lightboxPrevSlide();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                lightboxNextSlide();
+            }
+        });
+
+        // Touch/swipe support for lightbox
+        let lightboxTouchStartX = 0;
+        let lightboxTouchEndX = 0;
+
+        lightbox?.addEventListener('touchstart', (e) => {
+            if (e.target.closest('.lightbox-content')) {
+                lightboxTouchStartX = e.changedTouches[0].screenX;
+            }
+        }, { passive: true });
+
+        lightbox?.addEventListener('touchend', (e) => {
+            if (e.target.closest('.lightbox-content')) {
+                lightboxTouchEndX = e.changedTouches[0].screenX;
+                handleLightboxSwipe();
+            }
+        }, { passive: true });
+
+        function handleLightboxSwipe() {
+            const swipeThreshold = 50;
+            const diff = lightboxTouchStartX - lightboxTouchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    lightboxNextSlide();
+                } else {
+                    lightboxPrevSlide();
+                }
+            }
+        }
+
+        // Initialize carousel
+        console.log('[Story Carousel] Initializing...');
+        updateCarousel(false);
+
+        console.log(`[Story Carousel] Initialized with ${totalSlides} stories (NO AUTOPLAY - user-controlled navigation)`);
+    })();
 
     // ===================================
     // CONSOLE MESSAGE
