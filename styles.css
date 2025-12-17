@@ -979,3 +979,39 @@ button:focus-visible {
         -webkit-backdrop-filter: blur(10px);
     }
 }
+
+/* ===================================
+   SANTA PHOTO FLYER HERO SECTION
+   =================================== */
+
+.flyer-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Dynamic viewport height for mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    z-index: 2;
+}
+
+.flyer-hero__inner {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flyer-hero__img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    max-height: 100dvh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    animation: fadeInScale 1s ease-out;
+}
