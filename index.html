@@ -91,115 +91,180 @@
         </div>
     </section>
 
-    <!-- Image Gallery Carousel Section -->
-    <section id="gallery-carousel" class="carousel-section" aria-label="Holiday Trail Photo Gallery">
+    <!-- Holiday Trail Photo Gallery - Story Style Carousel -->
+    <section id="gallery-carousel" class="story-carousel-section" aria-label="Holiday Trail Photo Gallery">
         <div class="container">
             <h2 class="section-title">Holiday Trail Memories</h2>
             <p class="section-subtitle">Explore the festive magic of our community celebration!</p>
 
-            <div class="carousel-container">
-                <div class="carousel-track" id="carouselTrack">
-                    <!-- Casa Coquito -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/casa_coquito_small.jpg">
-                            <img src="assets/images/casa_coquito_large.jpg" alt="Casa Coquito holiday display"
-                                loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Cookie Corner -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/cookie_corner_small.jpg">
-                            <img src="assets/images/cookie_corner_large.jpg" alt="Cookie Corner festive setup"
-                                loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Cookie Corner 2 -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/cookie_corner_small_2.PNG">
-                            <img src="assets/images/cookie_corner_large_2.png" alt="Cookie Corner display"
-                                loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Dear Santa -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/dear_santa_small.jpg">
-                            <img src="assets/images/dear_santa_large.jpg" alt="Dear Santa mailbox" loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Fajardo -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/fajardo_small.PNG">
-                            <img src="assets/images/fajardo_large.PNG" alt="Fajardo holiday lights" loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Fox -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/fox_small.jpg">
-                            <img src="assets/images/fox_large.jpg" alt="Fox holiday decoration" loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Gingerbread House -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/gignerbreadhouse_small.jpg">
-                            <img src="assets/images/gingerbreadhouse_large.jpg" alt="Gingerbread house display"
-                                loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Jet Ski Santa -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/jet_ski_santa_small.jpg">
-                            <img src="assets/images/jet_ski_santa_large.jpg" alt="Jet Ski Santa decoration"
-                                loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Miracle -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/miracle_small.PNG">
-                            <img src="assets/images/miracle_large.PNG" alt="Miracle on 34th Street display"
-                                loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- Santa Sweet -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/santa_sweet_small.jpg">
-                            <img src="assets/images/santa_sweet_large.jpg" alt="Santa's Sweet Shop" loading="lazy">
-                        </picture>
-                    </div>
-                    <!-- S'mores -->
-                    <div class="carousel-slide">
-                        <picture>
-                            <source media="(max-width: 900px)" srcset="assets/images/smores_small.jpg">
-                            <img src="assets/images/smores_large.jpg" alt="S'mores station" loading="lazy">
-                        </picture>
+            <div class="story-carousel">
+                <!-- Carousel Viewport -->
+                <div class="carousel-viewport">
+                    <!-- Carousel Track -->
+                    <div class="carousel-track" id="storyCarouselTrack">
+                        <!-- Slide 1: Miracle on 58 Ave -->
+                        <div class="carousel-story-slide" data-slide="0">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/miracle_large.PNG">
+                                <img src="assets/images/miracle_small.PNG" alt="Miracle on 58 Ave holiday display"
+                                    loading="eager">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Miracle on 58 Ave</h3>
+                                <p>Address: 5821 SW 37th Street</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Cookie Corner -->
+                        <div class="carousel-story-slide" data-slide="1">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/cookie_corner_large.jpg">
+                                <img src="assets/images/cookie_corner_small.jpg" alt="Cookie Corner festive treats"
+                                    loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Cookie Corner</h3>
+                                <p>Delicious holiday treats & hot cocoa</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Jet Ski Santa -->
+                        <div class="carousel-story-slide" data-slide="2">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/jet_ski_santa_large.jpg">
+                                <img src="assets/images/jet_ski_santa_small.jpg"
+                                    alt="Jet Ski Santa tropical holiday display" loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Jet Ski Santa</h3>
+                                <p>Florida-style holiday cheer!</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Gingerbread House -->
+                        <div class="carousel-story-slide" data-slide="3">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/gingerbreadhouse_large.jpg">
+                                <img src="assets/images/gignerbreadhouse_small.jpg"
+                                    alt="Gingerbread house holiday display" loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Gingerbread House</h3>
+                                <p>Sweet holiday magic</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: Santa's Sweet Station -->
+                        <div class="carousel-story-slide" data-slide="4">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/santa_sweet_large.jpg">
+                                <img src="assets/images/santa_sweet_small.jpg"
+                                    alt="Santa's Sweet Station candy and treats" loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Santa's Sweet Station</h3>
+                                <p>Address: 3703 SW 58th Avenue</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Casa Coquito -->
+                        <div class="carousel-story-slide" data-slide="5">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/casa_coquito_large.jpg">
+                                <img src="assets/images/casa_coquito_small.jpg"
+                                    alt="Casa Coquito tropical holiday celebration" loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Casa Coquito</h3>
+                                <p>Traditional holiday flavors</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 7: Dear Santa Mailbox -->
+                        <div class="carousel-story-slide" data-slide="6">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/dear_santa_large.jpg" />
+                                <img src="assets/images/dear_santa_small.jpg" alt="Dear Santa mailbox for letters"
+                                    loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Dear Santa Mailbox</h3>
+                                <p>Send your wishes to the North Pole</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 8: Fox Display -->
+                        <div class="carousel-story-slide" data-slide="7">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/fox_large.jpg">
+                                <img src="assets/images/fox_small.jpg" alt="Fox family holiday lights display"
+                                    loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Fox Display</h3>
+                                <p>Sparkling winter wonderland</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 9: Fajardo Lights -->
+                        <div class="carousel-story-slide" data-slide="8">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/fajardo_large.PNG">
+                                <img src="assets/images/fajardo_small.PNG" alt="Fajardo holiday lights spectacular"
+                                    loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Fajardo Lights</h3>
+                                <p>Dazzling light display</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 10: S'mores Station -->
+                        <div class="carousel-story-slide" data-slide="9">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/smores_large.jpg">
+                                <img src="assets/images/smores_small.jpg" alt="S'mores station campfire treats"
+                                    loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>S'mores Station</h3>
+                                <p>Toasty campfire treats</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 11: Cookie Corner Alternative -->
+                        <div class="carousel-story-slide" data-slide="10">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="assets/images/cookie_corner_large_2.png">
+                                <img src="assets/images/cookie_corner_small_2.PNG"
+                                    alt="Cookie Corner holiday baking station" loading="lazy">
+                            </picture>
+                            <div class="slide-caption">
+                                <h3>Cookie Decorating</h3>
+                                <p>Hands-on holiday fun</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Navigation Arrows -->
-                <button class="carousel-btn carousel-btn-prev" id="prevBtn" aria-label="Previous image">
+                <button class="story-nav-btn story-nav-prev" id="storyPrevBtn" aria-label="Previous story">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
-                <button class="carousel-btn carousel-btn-next" id="nextBtn" aria-label="Next image">
+                <button class="story-nav-btn story-nav-next" id="storyNextBtn" aria-label="Next story">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
 
-                <!-- Carousel Indicators -->
-                <div class="carousel-indicators" id="carouselIndicators"></div>
+                <!-- Progress Indicators -->
+                <div class="story-progress" id="storyProgress" aria-label="Carousel progress">
+                    <!-- Indicators will be generated by JavaScript -->
+                </div>
             </div>
         </div>
     </section>
