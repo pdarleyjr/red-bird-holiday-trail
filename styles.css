@@ -991,6 +991,7 @@ button:focus-visible {
     min-height: 100dvh;
     /* Dynamic viewport height for mobile */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-md);
@@ -1014,6 +1015,79 @@ button:focus-visible {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg), var(--shadow-glow);
     animation: fadeInScale 1s ease-out;
+}
+
+/* Santa Details Card */
+.santa-details-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.santa-details-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.santa-detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--metallic-gold);
+    transition: all 0.3s ease;
+}
+
+.santa-detail-row:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+    border-left-color: var(--radiant-red);
+}
+
+.detail-icon {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.detail-text {
+    flex: 1;
+}
+
+.detail-text h3 {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    color: var(--metallic-gold);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.detail-text p {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+    color: var(--soft-beige);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Grid for Larger Screens */
+@media (min-width: 768px) {
+    .santa-details-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .santa-details-card {
+        margin-top: 3rem;
+    }
 }
 
 /* Fallback for browsers without dvh support */
